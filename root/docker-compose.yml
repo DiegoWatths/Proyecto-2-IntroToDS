@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  api:
+    image: api
+    build:
+      context: ./API
+      dockerfile: ./API/Dockerfile
+    environment:
+      NODE_ENV: production
+      MONGO_URI: mongodb://localhost/videogames
+    ports:
+      - 3000:3000
+  authapi:
+    image: authapi
+    build:
+      context: ./Auth Api
+      dockerfile: ./Auth Api/Dockerfile
+    environment:
+      NODE_ENV: production
+      MONGO_URI: mongodb://localhost/users
+    ports:
+      - 3001:3001
+  bffmovil:
+    image: bffmovil
+    build:
+      context: ./BFF Móvil
+      dockerfile: ./BFF Móvil/Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4000:4000
+  bffdesktop:
+    image: bffdesktop
+    build:
+      context: ./BFF Desktop
+      dockerfile: ./BFF Desktop/Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4001:4001
